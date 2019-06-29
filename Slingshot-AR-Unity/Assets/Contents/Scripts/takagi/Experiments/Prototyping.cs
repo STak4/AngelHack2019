@@ -103,15 +103,8 @@ public class Prototyping : MonoBehaviour
 
     public void LoadWorldMap()
     {
-        if (_state == GameState.Place)
-        {
-            Debug.Log("Load Button Pushed");
-            _wc.LoadStart(LoadCheck);
-        }
-        else
-        {
-            Debug.LogWarning("Load is unavailable now.");
-        }
+        Debug.Log("Load Button Pushed");
+        _wc.LoadStart(LoadCheck);
     }
 
     #endregion
