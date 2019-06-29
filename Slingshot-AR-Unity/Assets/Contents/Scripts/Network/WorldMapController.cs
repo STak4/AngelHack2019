@@ -3,30 +3,55 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.XR.ARFoundation;
 using UnityEngine.XR.ARSubsystems;
+using UnityEngine.UI;
 using System.IO;
 using Unity.Collections;
 #if UNITY_IOS
 using UnityEngine.XR.ARKit;
 #endif
 
-public class WorldMapController
+public class WorldMapController : MonoBehaviour
 {
     string worldmapName = "SlingShotMap";
 
-    ARSession _session;
+    public ARSession _session { get; set; }
 
-    public WorldMapController(ARSession session)
+    ARWorldMappingStatus _status = ARWorldMappingStatus.NotAvailable;
+
+
+    
+
+    private void Start()
     {
-        _session = session;
+        _session = null;
     }
 
+    private void Update()
+    {
+        if(_session != null)
+        {
+#if UNITY_IOS
+            var sessionSubsystem = (ARKitSessionSubsystem)_session.subsystem;
+#else
+        XRSessionSubsystem sessionSubsystem = null;
+#endif
+            if (sessionSubsystem == null)
+                return;
+            if(_status != sessionSubsystem.worldMappingStatus)
+            {
+                Debug.Log(string.Format("Mapping Status Changed: {0}", sessionSubsystem.worldMappingStatus));
+                _status = sessionSubsystem.worldMappingStatus;
+            }
+        }
+
+    }
 
     #region public methods
     public void SaveStart(System.Action<bool> savedAction)
     {
         IEnumerator _save = Save(savedAction);
         Debug.Log("Save Start");
-        _save.MoveNext();
+        StartCoroutine(Save(savedAction));
     }
 
     public void LoadStart(System.Action<bool> loadedAction)
@@ -52,7 +77,6 @@ public class WorldMapController
         var request = sessionSubsystem.GetARWorldMapAsync();
         Debug.Log("Wait Request Done...");
         while (!request.status.IsDone())
-            Debug.Log(request.status.ToString());
             yield return null;
 
         if (request.status.IsError())

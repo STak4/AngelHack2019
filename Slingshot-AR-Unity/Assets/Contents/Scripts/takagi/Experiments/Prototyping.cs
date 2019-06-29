@@ -19,6 +19,7 @@ public class Prototyping : MonoBehaviour
     [SerializeField]
     FieldController fieldController;
 
+    [SerializeField]
     WorldMapController _wc;
 
     enum GameState
@@ -180,7 +181,7 @@ public class Prototyping : MonoBehaviour
             _raycast = GameObject.Find("AR Session Origin").GetComponent<ARRaycastManager>();
 
         _session.enabled = true;
-        _wc = new WorldMapController(_session);
+        _wc._session = _session;
 
         StateChange(GameState.Place);
         Debug.Log("ARStarted");
