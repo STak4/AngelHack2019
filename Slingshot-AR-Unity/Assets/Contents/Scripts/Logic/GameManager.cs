@@ -63,9 +63,8 @@ public class GameManager : SingletonMonoBehaviour<GameManager>
     #region public methods
     public void EnableAR()
     {
-        SwitchCamera();
-
         arSession.enabled = true;
+        SwitchCamera();
         wmController._session = arSession;
 
         Debug.Log("GameManager: ARStarted");

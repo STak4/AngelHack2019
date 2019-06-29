@@ -67,8 +67,10 @@ public class Host : MonoBehaviour
     void Send()
     {
         GameInputManager.Instance.Selected.RemoveListener(FieldUpdate);
+        
         Finish();
     }
+
 
     void Finish()
     {
