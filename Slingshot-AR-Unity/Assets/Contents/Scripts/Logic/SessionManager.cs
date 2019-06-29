@@ -1,10 +1,17 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class SessionManager : MonoBehaviour
 {
+    [SerializeField]
+    GameObject countDownPanel;
+
     bool onSession = false;
+
+    public UnityEvent OnStarted;
+    public UnityEvent OnFinished;
 
     // Start is called before the first frame update
     void Start()
@@ -20,9 +27,9 @@ public class SessionManager : MonoBehaviour
 
     public void SessionStart()
     {
-        onSession = true;
-
         // Get objects on GameStart
+
+        
 
     }
 
@@ -61,5 +68,17 @@ public class SessionManager : MonoBehaviour
 
     }
 
+    IEnumerator CoundDown()
+    {
+        countDownPanel.SetActive(true);
+        for(int i = 0; i < 3; i++)
+        {
+            yield return new WaitForSeconds(1.0f);
+        }
+        countDownPanel.SetActive(false);
+        // Game Start
+        onSession = true;
+        OnStarted?.Invoke();
+    }
    
 }
