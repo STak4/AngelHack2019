@@ -13,20 +13,66 @@ namespace kai
         [SerializeField]
         UnityClient client;
         public Guid myGuid;
+        private int count;
+        
         // Start is called before the first frame update
+
         void Start()
         {
             myGuid = Guid.NewGuid();
             client.MessageReceived += OnMessageReceived;
+            var guid = myGuid.ToString();
+            using (DarkRiftWriter newPlayerWriter = DarkRiftWriter.Create())
+            {
+                newPlayerWriter.Write("Player");
+                newPlayerWriter.Write(guid);
+                var position = transform.position;
+                var rotation = transform.rotation;
+                newPlayerWriter.Write(position.x);
+                newPlayerWriter.Write(position.y);
+                newPlayerWriter.Write(position.z);
+                newPlayerWriter.Write(rotation.x);
+                newPlayerWriter.Write(rotation.y);
+                newPlayerWriter.Write(rotation.z);
+                newPlayerWriter.Write(rotation.w);
+                using (Message newPlayerMessage = Message.Create(1, newPlayerWriter))
+                {
+                    client.SendMessage(newPlayerMessage, SendMode.Reliable);
+                }
+            }
+            Debug.Log("Spawn");
         }
 
         // Update is called once per frame
-        void Update()
+        void FixedUpdate()
         {
-        
+            if (count % 2 == 0)
+            {
+                var guid = myGuid.ToString();
+                using (DarkRiftWriter newPlayerWriter = DarkRiftWriter.Create())
+                {
+                    newPlayerWriter.Write("Player");
+                    newPlayerWriter.Write(guid);
+                    var position = transform.position;
+                    var rotation = transform.rotation;
+                    newPlayerWriter.Write(position.x);
+                    newPlayerWriter.Write(position.y);
+                    newPlayerWriter.Write(position.z);
+                    newPlayerWriter.Write(rotation.x);
+                    newPlayerWriter.Write(rotation.y);
+                    newPlayerWriter.Write(rotation.z);
+                    newPlayerWriter.Write(rotation.w);
+                    using (Message newPlayerMessage = Message.Create(2, newPlayerWriter))
+                    {
+                        client.SendMessage(newPlayerMessage, SendMode.Reliable);
+                    }
+                }
+
+                //Debug.Log("Transform");
+            }
         }
 
-        void sendTransform()
+        void SendTransform()
         {
             using (DarkRiftWriter newPlayerWriter = DarkRiftWriter.Create())
             {
@@ -35,7 +81,7 @@ namespace kai
                 using (Message newPlayerMessage = Message.Create(10, newPlayerWriter))
                 {
                     
-                    client.SendMessage(newPlayerMessage, SendMode.Reliable);
+                    client.SendMessage(newPlayerMessage, SendMode.Unreliable);
                 }
             }
         }

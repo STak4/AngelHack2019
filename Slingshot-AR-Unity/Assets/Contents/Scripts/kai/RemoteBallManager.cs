@@ -59,8 +59,8 @@ public class RemoteBallManager : MonoBehaviour
             qy = reader.ReadSingle();
             qz = reader.ReadSingle();
             qw = reader.ReadSingle();
-            Debug.Log($"Change Transform of Player with Type: {type} Guid: {guid} to\n" +
-                      $"x: {x} y: {y} z: {z} qx:{qx} qy: {qy} qz: {qz} qw: {qw}");
+            //Debug.Log($"Change Transform of Player with Type: {type} Guid: {guid} to\n" +
+            //          $"x: {x} y: {y} z: {z} qx:{qx} qy: {qy} qz: {qz} qw: {qw}");
             ChangeTransform(guid, new Vector3(x, y, z), new Quaternion(qx, qy, qz, qw));
         }
 

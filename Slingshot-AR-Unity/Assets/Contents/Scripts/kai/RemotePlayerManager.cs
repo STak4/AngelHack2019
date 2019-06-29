@@ -59,8 +59,8 @@ public class RemotePlayerManager : MonoBehaviour
             qy = reader.ReadSingle();
             qz = reader.ReadSingle();
             qw = reader.ReadSingle();
-            Debug.Log($"Change Transform of Player with Type: {type} Guid: {guid} to\n" +
-                      $"x: {x} y: {y} z: {z} qx:{qx} qy: {qy} qz: {qz} qw: {qw}");
+            //Debug.Log($"Change Transform of Player with Type: {type} Guid: {guid} to\n" +
+            //          $"x: {x} y: {y} z: {z} qx:{qx} qy: {qy} qz: {qz} qw: {qw}");
             ChangeTransform(guid, new Vector3(x, y, z), new Quaternion(qx, qy, qz, qw));
         }
 
@@ -92,13 +92,13 @@ public class RemotePlayerManager : MonoBehaviour
         GameObject _gameObject;
         if (remotePlayers.TryGetValue(guid, out _gameObject))
         {
-            Debug.Log($"Find Guid: {guid}");
+            //Debug.Log($"Find Guid: {guid}");
             _gameObject.transform.position = _position;
             _gameObject.transform.rotation = _rotation;
         }
         else
         {
-            Debug.Log($"Not Found Guid: {guid}");
+            //Debug.Log($"Not Found Guid: {guid}");
         }
     }
 
