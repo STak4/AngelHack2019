@@ -58,7 +58,7 @@ public class Remote : MonoBehaviour
     {
         instText.text = "WorldMapFound! Push the Select Button";
         startBtn.interactable = true;
-        
+        GameInputManager.Instance.WaitStart();
         GameInputManager.Instance.Selected.AddListener(OnStarted);
         if(fieldController._field != null)
         {

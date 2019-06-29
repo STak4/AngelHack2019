@@ -66,6 +66,12 @@ public class GameInputManager : SingletonMonoBehaviour<GameInputManager>
         tapWait = onFirstPlace;
         inputState = InputState.Place;
     }
+
+    public void WaitStart()
+    {
+        inputState = InputState.Await;
+    }
+
     // For Non BLE mode
     public void SelectButton()
     {
