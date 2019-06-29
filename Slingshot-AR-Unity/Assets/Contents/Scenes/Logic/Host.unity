@@ -398,9 +398,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c888509500c5643ff98ce83e781d9ab6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  instText: {fileID: 0}
-  sendBtn: {fileID: 0}
-  fieldController: {fileID: 0}
+  instText: {fileID: 1883263241}
+  sendBtn: {fileID: 1337723566}
+  fieldController: {fileID: 1411281765}
 --- !u!1 &765988742
 GameObject:
   m_ObjectHideFlags: 0
