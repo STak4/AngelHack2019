@@ -44,3 +44,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   sequenceManager: {fileID: 0}
+  subCamera: {fileID: 0}

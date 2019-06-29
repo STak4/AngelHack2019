@@ -50,7 +50,9 @@ MonoBehaviour:
   menuPrefab: {fileID: 5520393412066104062, guid: 0e5686e8cb8144930b414b623da17867,
     type: 3}
   singlePrefab: {fileID: 0}
-  hostPrefab: {fileID: 0}
+  hostPrefab: {fileID: 2499141743496082939, guid: 2985c8529ff8444848668dbaa789abe2,
+    type: 3}
   remotePrefab: {fileID: 0}
   spectatorPrefab: {fileID: 0}
+  gamePrefab: {fileID: 0}
   resultPrefab: {fileID: 0}
