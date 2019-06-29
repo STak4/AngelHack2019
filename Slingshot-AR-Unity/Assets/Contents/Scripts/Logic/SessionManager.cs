@@ -2,11 +2,21 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.UI;
 
 public class SessionManager : MonoBehaviour
 {
     [SerializeField]
-    GameObject countDownPanel;
+    Text countDownText;
+
+    [SerializeField]
+    GameObject timerPanel;
+
+    [SerializeField]
+    Text timerText;
+
+    [SerializeField]
+    float timeLimit = 60f;
 
     bool onSession = false;
 
@@ -22,15 +32,23 @@ public class SessionManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        if (onSession)
+        {
+            timeLimit -= Time.deltaTime;
+            if(timeLimit <= 0f)
+            {
+                Debug.Log("Game Finished!");
+                OnFinished?.Invoke();
+            }
+        }
     }
 
     public void SessionStart()
     {
         // Get objects on GameStart
 
-        
 
+        StartCoroutine(CoundDown());
     }
 
     public void RequestHit(GameObject enemy)
@@ -38,7 +56,7 @@ public class SessionManager : MonoBehaviour
 
     }
 
-    public void RequestShoot(PlayerBall.Ball ball, Pose pose, float power)
+    public void RequestShoot(BallContainer.BallType type, Pose pose, float power)
     {
 
     }
@@ -53,7 +71,7 @@ public class SessionManager : MonoBehaviour
 
     }
 
-    public void ReceiveShoot(PlayerBall.Ball ball, Pose pose, float power)
+    public void ReceiveShoot(BallContainer.BallType type, Pose pose, float power)
     {
 
     }
@@ -70,12 +88,15 @@ public class SessionManager : MonoBehaviour
 
     IEnumerator CoundDown()
     {
-        countDownPanel.SetActive(true);
-        for(int i = 0; i < 3; i++)
+        countDownText.gameObject.SetActive(true);
+        Debug.Log("Game Will be started...");
+        for (int i = 0; i < 3; i++)
         {
+            Debug.Log(3 - i);
             yield return new WaitForSeconds(1.0f);
         }
-        countDownPanel.SetActive(false);
+        countDownText.gameObject.SetActive(false);
+        timerPanel.SetActive(true);
         // Game Start
         onSession = true;
         OnStarted?.Invoke();
