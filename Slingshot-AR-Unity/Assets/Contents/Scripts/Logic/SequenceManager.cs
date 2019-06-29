@@ -102,6 +102,8 @@ public class SequenceManager : MonoBehaviour
                 sequencePrefab = Instantiate(hostPrefab, Vector3.zero, Quaternion.identity);
                 break;
             case Sequences.Remote:
+                _sequence = new RemoteSequence();
+                sequencePrefab = Instantiate(remotePrefab, Vector3.zero, Quaternion.identity);
                 break;
             case Sequences.Spectator:
                 break;
