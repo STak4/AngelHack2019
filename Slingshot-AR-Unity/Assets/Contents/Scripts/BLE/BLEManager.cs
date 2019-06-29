@@ -39,6 +39,8 @@ public class BLEManager : MonoBehaviour
     [SerializeField]
     UnityEvent tensionUpdate;
 
+    System.Action connectWait;
+
     private int _tension;
 
     public enum States
@@ -70,9 +72,11 @@ public class BLEManager : MonoBehaviour
         // advertising data available 
         BluetoothLEHardwareInterface.Log("M-BLE: Scan Start");
         BluetoothLEHardwareInterface.ScanForPeripheralsWithServices(null, (address, name) => {
-            AddPeripheral(name, address, onFinished);
+            AddPeripheral(name, address);
         }, (address, name, rssi, advertisingInfo) => { });
         StateChange(States.Scan);
+
+        connectWait = onFinished;
     }
 
     public void SubscribeStart()
@@ -132,7 +136,7 @@ public class BLEManager : MonoBehaviour
         );
     }
 
-    void AddPeripheral(string name, string address, System.Action onFinished)
+    void AddPeripheral(string name, string address)
     {
         BluetoothLEHardwareInterface.Log("Found: " + name);
 
@@ -187,7 +191,7 @@ public class BLEManager : MonoBehaviour
 
                    BluetoothLEHardwareInterface.Log("Connected. Stop scanning" + address);
                    BluetoothLEHardwareInterface.StopScan();
-
+                   connectWait?.Invoke();
                }
            }, (address) => {
 
@@ -209,7 +213,7 @@ public class BLEManager : MonoBehaviour
     void StateChange(States next)
     {
         _states = next;
-        Debug.Log("Now State: " + _states);
+        Debug.Log("Now BLE State: " + _states);
         stateChange.Invoke();
     }
 

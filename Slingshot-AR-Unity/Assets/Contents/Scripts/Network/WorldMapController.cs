@@ -12,14 +12,24 @@ using UnityEngine.XR.ARKit;
 
 public class WorldMapController : MonoBehaviour
 {
+    public enum WorldMapState
+    {
+        None,
+        Sending,
+        Loading,
+        Successed,
+        Failed,
+        Synchronized
+    }
+
+    public WorldMapState mapState { get; set; }
     string worldmapName = "SlingShotMap";
 
     public ARSession _session { get; set; }
 
     ARWorldMappingStatus _status = ARWorldMappingStatus.NotAvailable;
 
-
-    
+    System.Action waitCreate;
 
     private void Start()
     {
@@ -41,6 +51,14 @@ public class WorldMapController : MonoBehaviour
             {
                 Debug.Log(string.Format("Mapping Status Changed: {0}", sessionSubsystem.worldMappingStatus));
                 _status = sessionSubsystem.worldMappingStatus;
+                if(_status == ARWorldMappingStatus.Mapped)
+                {
+                    if(waitCreate != null)
+                    {
+                        waitCreate.Invoke();
+                        waitCreate = null;
+                    }
+                }
             }
         }
 
@@ -59,6 +77,11 @@ public class WorldMapController : MonoBehaviour
         IEnumerator _load = Load(loadedAction);
         Debug.Log("Load Start");
         _load.MoveNext();
+    }
+
+    public void CreateWorldMap(System.Action onCreated)
+    {
+
     }
     #endregion
 

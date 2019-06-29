@@ -10,7 +10,8 @@ public class TitleSequence : BaseSequence
     {
         base.StartSequence(callback, obj);
         _title = obj.GetComponent<Title>();
-        //_title.Init(EndSequence);
+        Debug.Log("Title Sequence Inited");
+        _title.Init(EndSequence);
     }
 
     public override void EndSequence()

@@ -4,15 +4,23 @@ using UnityEngine;
 
 public class Title : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    System.Action _finished;
+
+    public void Init(System.Action onFinished)
     {
-        
+        Debug.Log("Scene Start");
+        _finished = onFinished;
     }
 
-    // Update is called once per frame
-    void Update()
+    public void FinishButton()
     {
-        
+        Finish();
     }
+
+    void Finish()
+    {
+        Debug.Log("Scene End");
+        _finished?.Invoke();
+    }
+
 }

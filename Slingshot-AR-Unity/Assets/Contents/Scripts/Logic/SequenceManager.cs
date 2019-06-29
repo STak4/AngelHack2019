@@ -9,18 +9,23 @@ public class SequenceManager : MonoBehaviour
     {
         None,
         Title,
+        Pairing,
         Menu,
         Tutorial,
         Single,
         Host,
         Remote,
         Spectator,
+        Game,
         Result
     }
 
     [SerializeField]
     GameObject titlePrefab;
 
+    [SerializeField]
+    GameObject pairingPrefab;
+    
     [SerializeField]
     GameObject menuPrefab;
 
@@ -37,6 +42,10 @@ public class SequenceManager : MonoBehaviour
     GameObject spectatorPrefab;
 
     [SerializeField]
+    GameObject gamePrefab;
+
+
+    [SerializeField]
     GameObject resultPrefab;
 
     public Sequences nowSequecne { get; private set; }
@@ -49,7 +58,7 @@ public class SequenceManager : MonoBehaviour
     #region MonoBehavior
     private void Start()
     {
-        InitManager();
+
     }
 
     private void Update()
@@ -61,8 +70,8 @@ public class SequenceManager : MonoBehaviour
     #region public methods
     public void InitManager()
     {
-        nowSequecne = Sequences.None;
         _sequence = null;
+        nowSequecne = Sequences.Title;
     }
 
     public void StartSequence()
@@ -70,22 +79,34 @@ public class SequenceManager : MonoBehaviour
         switch (nowSequecne)
         {
             case Sequences.None:
+                break;
+            case Sequences.Title:
                 _sequence = new TitleSequence();
                 sequencePrefab = Instantiate(titlePrefab, Vector3.zero, Quaternion.identity);
                 break;
-            case Sequences.Title:
+            case Sequences.Pairing:
+                _sequence = new PairingSequence();
+                sequencePrefab = Instantiate(pairingPrefab, Vector3.zero, Quaternion.identity);
                 break;
+
             case Sequences.Menu:
+                _sequence = new MenuSequence();
+                sequencePrefab = Instantiate(menuPrefab, Vector3.zero, Quaternion.identity);
                 break;
             case Sequences.Tutorial:
                 break;
             case Sequences.Single:
                 break;
             case Sequences.Host:
+                _sequence = new HostSequence();
+                sequencePrefab = Instantiate(hostPrefab, Vector3.zero, Quaternion.identity);
                 break;
             case Sequences.Remote:
                 break;
             case Sequences.Spectator:
+                break;
+
+            case Sequences.Game:
                 break;
             case Sequences.Result:
                 break;
@@ -109,25 +130,49 @@ public class SequenceManager : MonoBehaviour
         switch (nowSequecne)
         {
             case Sequences.None:
-                nowSequecne = Sequences.Title;
                 break;
             case Sequences.Title:
+                nowSequecne = Sequences.Pairing;
+                Destroy(sequencePrefab);
+                break;
+
+            case Sequences.Pairing:
                 nowSequecne = Sequences.Menu;
                 Destroy(sequencePrefab);
                 break;
+
             case Sequences.Menu:
+                switch (GameManager.Instance._mode)
+                {
+                    case GameManager.Mode.None:
+                        break;
+                    case GameManager.Mode.Single:
+                        nowSequecne = Sequences.Single;
+                        break;
+                    case GameManager.Mode.Host:
+                        nowSequecne = Sequences.Host;
+                        break;
+                    case GameManager.Mode.Remote:
+                        nowSequecne = Sequences.Remote;
+                        break;
+                }
+                Destroy(sequencePrefab);
                 break;
             case Sequences.Tutorial:
                 break;
             case Sequences.Single:
-                break;
             case Sequences.Host:
-                break;
             case Sequences.Remote:
-                break;
             case Sequences.Spectator:
+                nowSequecne = Sequences.Game;
                 break;
+
+            case Sequences.Game:
+                nowSequecne = Sequences.Result;
+                break;
+
             case Sequences.Result:
+                nowSequecne = Sequences.Title;
                 break;
         }
 
