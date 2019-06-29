@@ -67,7 +67,6 @@ public class WorldMapController : MonoBehaviour
     #region public methods
     public void SaveStart(System.Action<bool> savedAction)
     {
-        IEnumerator _save = Save(savedAction);
         Debug.Log("Save Start");
         StartCoroutine(Save(savedAction));
     }
@@ -76,7 +75,7 @@ public class WorldMapController : MonoBehaviour
     {
         IEnumerator _load = Load(loadedAction);
         Debug.Log("Load Start");
-        _load.MoveNext();
+        StartCoroutine(Load(loadedAction));
     }
 
     public void CreateWorldMap(System.Action onCreated)
