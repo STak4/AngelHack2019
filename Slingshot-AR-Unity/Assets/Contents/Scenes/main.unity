@@ -1051,6 +1051,11 @@ PrefabInstance:
       propertyPath: sequenceManager
       value: 
       objectReference: {fileID: 928248649}
+    - target: {fileID: 27822231544645871, guid: 0c23c6bf852a244f6a67485b7a16dd87,
+        type: 3}
+      propertyPath: subCamera
+      value: 
+      objectReference: {fileID: 1798127393}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0c23c6bf852a244f6a67485b7a16dd87, type: 3}
 --- !u!1001 &3490176813923490527
