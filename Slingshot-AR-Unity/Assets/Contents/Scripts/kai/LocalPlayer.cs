@@ -24,7 +24,6 @@ namespace kai
             var guid = myGuid.ToString();
             using (DarkRiftWriter newPlayerWriter = DarkRiftWriter.Create())
             {
-                newPlayerWriter.Write("Player");
                 newPlayerWriter.Write(guid);
                 var position = transform.position;
                 var rotation = transform.rotation;
@@ -51,7 +50,6 @@ namespace kai
                 var guid = myGuid.ToString();
                 using (DarkRiftWriter newPlayerWriter = DarkRiftWriter.Create())
                 {
-                    newPlayerWriter.Write("Player");
                     newPlayerWriter.Write(guid);
                     var position = transform.position;
                     var rotation = transform.rotation;

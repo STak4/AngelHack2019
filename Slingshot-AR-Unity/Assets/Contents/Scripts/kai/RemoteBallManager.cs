@@ -26,12 +26,6 @@ public class RemoteBallManager : MonoBehaviour
     {
         var message = e.GetMessage();
         var reader = message.GetReader();
-        string type = reader.ReadString();
-        if (type != "Ball")
-        {
-            Debug.Log("Not Player type");
-            return;
-        }
         string guid;
         float x, y, z;
         float qx, qy, qz, qw;
@@ -45,7 +39,7 @@ public class RemoteBallManager : MonoBehaviour
             qy = reader.ReadSingle();
             qz = reader.ReadSingle();
             qw = reader.ReadSingle();
-            Debug.Log($"Spawn Player with Type: {type} Guid: {guid}\n" +
+            Debug.Log($"Spawn Player with Guid: {guid}\n" +
                       $"x: {x} y: {y} z: {z} qx:{qx} qy: {qy} qz: {qz} qw: {qw}");
             Spawn(guid, new Vector3(x, y, z), new Quaternion(qx, qy, qz, qw));
         } 
@@ -59,7 +53,7 @@ public class RemoteBallManager : MonoBehaviour
             qy = reader.ReadSingle();
             qz = reader.ReadSingle();
             qw = reader.ReadSingle();
-            //Debug.Log($"Change Transform of Player with Type: {type} Guid: {guid} to\n" +
+            //Debug.Log($"Change Transform of Player with Guid: {guid} to\n" +
             //          $"x: {x} y: {y} z: {z} qx:{qx} qy: {qy} qz: {qz} qw: {qw}");
             ChangeTransform(guid, new Vector3(x, y, z), new Quaternion(qx, qy, qz, qw));
         }
@@ -67,7 +61,7 @@ public class RemoteBallManager : MonoBehaviour
         else if (e.GetMessage().Tag == 3)
         {
             guid = reader.ReadString();
-            Debug.Log($"Destroy Player with Type: {type} Guid: {guid}");
+            Debug.Log($"Destroy Player with Guid: {guid}");
             DestroyPlayer(guid);
         }
     }

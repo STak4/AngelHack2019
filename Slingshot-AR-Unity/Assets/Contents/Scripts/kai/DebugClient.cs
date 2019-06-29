@@ -27,7 +27,6 @@ public class DebugClient : MonoBehaviour
             var guid = localPlayer.GetComponent<kai.LocalPlayer>().myGuid.ToString();
             using (DarkRiftWriter newPlayerWriter = DarkRiftWriter.Create())
             {
-                newPlayerWriter.Write("Player");
                 newPlayerWriter.Write(guid);
                 var position = localPlayer.transform.position;
                 var rotation = localPlayer.transform.rotation;
@@ -50,7 +49,6 @@ public class DebugClient : MonoBehaviour
             var guid = localPlayer.GetComponent<kai.LocalPlayer>().myGuid.ToString();
             using (DarkRiftWriter newPlayerWriter = DarkRiftWriter.Create())
             {
-                newPlayerWriter.Write("Player");
                 newPlayerWriter.Write(guid);
                 var position = localPlayer.transform.position;
                 var rotation = localPlayer.transform.rotation;
@@ -73,7 +71,6 @@ public class DebugClient : MonoBehaviour
             var guid = localPlayer.GetComponent<kai.LocalPlayer>().myGuid.ToString();
             using (DarkRiftWriter newPlayerWriter = DarkRiftWriter.Create())
             {
-                newPlayerWriter.Write("Player");
                 newPlayerWriter.Write(guid);
                 var position = localPlayer.transform.position;
                 using (Message newPlayerMessage = Message.Create(3, newPlayerWriter))
