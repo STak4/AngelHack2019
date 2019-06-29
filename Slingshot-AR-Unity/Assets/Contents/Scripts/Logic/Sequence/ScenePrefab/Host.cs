@@ -72,10 +72,21 @@ public class Host : MonoBehaviour
     void Send()
     {
         GameInputManager.Instance.Selected.RemoveListener(FieldUpdate);
-        
+        GameManager.Instance.SaveMap(SaveFinish);
         Finish();
     }
 
+    void SaveFinish(bool success)
+    {
+        if (success)
+        {
+            instText.text = "Waiting connect player";
+        }
+        else
+        {
+            instText.text = "Save failed";
+        }
+    }
 
     void Finish()
     {
