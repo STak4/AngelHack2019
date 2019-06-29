@@ -83,9 +83,14 @@ public class GameManager : SingletonMonoBehaviour<GameManager>
         Debug.Log("GameManager: ARDisabled");
     }
 
-    public void SaveMap()
+    public void SaveMap(System.Action<bool> onSaved)
     {
-        //wmController.SaveStart()
+        wmController.SaveStart(onSaved);
+    }
+
+    public void LoadMap(System.Action<bool> onLoaded)
+    {
+        wmController.LoadStart(onLoaded);
     }
     #endregion
 

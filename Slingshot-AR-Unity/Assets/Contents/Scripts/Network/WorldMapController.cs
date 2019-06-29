@@ -31,6 +31,8 @@ public class WorldMapController : MonoBehaviour
 
     System.Action waitCreate;
 
+    System.Action waitFound;
+
     private void Start()
     {
         _session = null;
@@ -58,6 +60,11 @@ public class WorldMapController : MonoBehaviour
                         waitCreate.Invoke();
                         waitCreate = null;
                     }
+                    else if(waitFound != null)
+                    {
+                        waitFound.Invoke();
+                        waitFound = null;
+                    }
                 }
             }
         }
@@ -81,6 +88,11 @@ public class WorldMapController : MonoBehaviour
     public void CreateWorldMap(System.Action onCreated)
     {
         waitCreate = onCreated;
+    }
+
+    public void FoundWorldMap(System.Action onFounded)
+    {
+        waitFound = onFounded;
     }
     #endregion
 

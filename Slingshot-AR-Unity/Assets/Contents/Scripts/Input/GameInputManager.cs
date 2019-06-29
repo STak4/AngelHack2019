@@ -28,6 +28,7 @@ public class GameInputManager : SingletonMonoBehaviour<GameInputManager>
     {
         None,
         Place,
+        Await,
         Game
     }
 
@@ -46,6 +47,9 @@ public class GameInputManager : SingletonMonoBehaviour<GameInputManager>
         {
             case InputState.Place:
                 PlaceCheck();
+                break;
+
+            case InputState.Await:
                 break;
             case InputState.Game:
                 break;
@@ -78,6 +82,15 @@ public class GameInputManager : SingletonMonoBehaviour<GameInputManager>
                     Selected?.Invoke();
                 }
                 break;
+            case InputState.Await:
+                if (tapWait != null)
+                {
+                    tapWait.Invoke();
+                    tapWait = null;
+                }
+                Selected?.Invoke();
+                break;
+
             case InputState.Game:
                 break;
 
@@ -100,7 +113,6 @@ public class GameInputManager : SingletonMonoBehaviour<GameInputManager>
         // Screen Center is target position
         if (_raycast.Raycast(new Vector2(0,0), s_Hits, TrackableType.PlaneWithinPolygon))
         {
-            Debug.Log("Hit");
             // Raycast hits are sorted by distance, so the first one
             // will be the closest hit.
             var hitPose = s_Hits[0].pose;
