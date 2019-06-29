@@ -32,6 +32,11 @@ public class Host : MonoBehaviour
         Send();
     }
 
+    public void DebugSelect()
+    {
+        GameInputManager.Instance.SelectButton();
+    }
+
 
     void StartAR()
     {

@@ -80,7 +80,7 @@ public class WorldMapController : MonoBehaviour
 
     public void CreateWorldMap(System.Action onCreated)
     {
-
+        waitCreate = onCreated;
     }
     #endregion
 

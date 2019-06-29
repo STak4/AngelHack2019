@@ -14,13 +14,13 @@ EditorBuildSettings:
   - enabled: 0
     path: Assets/Thirdparty/ARSampleOffical/Scenes/LightEstimation.unity
     guid: 2f0cbc82480584c258f99f0d9e4ba302
-  - enabled: 1
+  - enabled: 0
     path: Assets/Contents/Scenes/Prototyping.unity
     guid: b4b5b9e307b3647c1b6f577965f02ed3
   - enabled: 0
     path: Assets/Contents/Scenes/Logic/Pairing.unity
     guid: a655a83d646154d539bd3fb33584acdd
-  - enabled: 0
+  - enabled: 1
     path: Assets/Contents/Scenes/main.unity
     guid: 5f431b7ec9a1f4c7ebb8a571d1f653a4
   m_configObjects:

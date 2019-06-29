@@ -12,11 +12,14 @@ public class GameManager : SingletonMonoBehaviour<GameManager>
     [SerializeField]
     Camera subCamera;
 
-    public ARSessionOrigin sessionOrigin { get; set; }
+    [SerializeField]
+    public ARSessionOrigin sessionOrigin;
 
-    public ARSession arSession { get; set; }
+    [SerializeField]
+    public ARSession arSession;
 
-    public WorldMapController wmController { get; set; }
+    [SerializeField]
+    public WorldMapController wmController;
 
     public Vector2 ScreenCenter { get; set; }
 
@@ -31,6 +34,8 @@ public class GameManager : SingletonMonoBehaviour<GameManager>
 
 
     public Mode _mode { get; set; }
+
+    public bool nonBLE = false;
 
     bool debugMode = false;
 
@@ -63,7 +68,7 @@ public class GameManager : SingletonMonoBehaviour<GameManager>
     #region public methods
     public void EnableAR()
     {
-        arSession.enabled = true;
+        sessionOrigin.enabled = true;
         SwitchCamera();
         wmController._session = arSession;
 

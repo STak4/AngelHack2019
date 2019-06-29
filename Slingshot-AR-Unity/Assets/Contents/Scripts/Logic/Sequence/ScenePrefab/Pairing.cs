@@ -41,6 +41,12 @@ public class Pairing : MonoBehaviour
         }
     }
 
+    public void NonBLE()
+    {
+        GameManager.Instance.nonBLE = true;
+        Finish();
+    }
+
     void Scan()
     {
         GameInputManager.Instance.BLEScan(OnConnected);
