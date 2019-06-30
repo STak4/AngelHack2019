@@ -44,6 +44,7 @@ GameObject:
   - component: {fileID: 5719853847835606490}
   - component: {fileID: 5719853847835606485}
   - component: {fileID: 5206849754180880678}
+  - component: {fileID: 2290424928810394792}
   m_Layer: 0
   m_Name: P_NormalBall
   m_TagString: Untagged
@@ -123,8 +124,8 @@ SphereCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 0.5
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Radius: 0.1
+  m_Center: {x: 0, y: 0.1, z: 0}
 --- !u!54 &5206849754180880678
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -141,6 +142,20 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &2290424928810394792
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5719853847835606486}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a6d521910e01743798cf612eb1cc71e6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  plantPrefab: {fileID: 8611674350446947817, guid: 3a352bdff31b247c3b6094cbe8d0ca9a,
+    type: 3}
 --- !u!1 &8481897623602062091
 GameObject:
   m_ObjectHideFlags: 0
