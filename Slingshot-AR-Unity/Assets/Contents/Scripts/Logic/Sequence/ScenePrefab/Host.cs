@@ -59,7 +59,8 @@ public class Host : MonoBehaviour
 
     void OnPlaced()
     {
-        instText.text = "You can send ARWorldMap or adjust field";
+        instText.text = "Game Start Ready";
+        GameInputManager.Instance.Selected.RemoveListener(FieldUpdate);
         sendBtn.interactable = true;
 
     }
