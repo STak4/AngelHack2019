@@ -45,6 +45,7 @@ GameObject:
   - component: {fileID: 5719853847835606485}
   - component: {fileID: 5206849754180880678}
   - component: {fileID: 2290424928810394792}
+  - component: {fileID: -6102251601179205065}
   m_Layer: 0
   m_Name: P_NormalBall
   m_TagString: Untagged
@@ -156,6 +157,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   plantPrefab: {fileID: 8611674350446947817, guid: 3a352bdff31b247c3b6094cbe8d0ca9a,
     type: 3}
+--- !u!114 &-6102251601179205065
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5719853847835606486}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 795d5e74879a64e0b8210f1da5f5c207, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isLocal: 0
 --- !u!1 &8481897623602062091
 GameObject:
   m_ObjectHideFlags: 0

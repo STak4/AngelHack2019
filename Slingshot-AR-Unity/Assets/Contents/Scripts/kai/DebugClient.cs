@@ -18,6 +18,7 @@ public class DebugClient : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        /*
         spawnButton = GameObject.Find("SpawnButton").GetComponent<Button>();
         transformButton = GameObject.Find("TransformButton").GetComponent<Button>();
         destroyButton = GameObject.Find("DestroyButton").GetComponent<Button>();
@@ -80,6 +81,7 @@ public class DebugClient : MonoBehaviour
             }
             Debug.Log("Destroy");
         });
+        */
     }
 
     // Update is called once per frame

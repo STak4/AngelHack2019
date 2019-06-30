@@ -72,9 +72,12 @@ public class Host : MonoBehaviour
 
     void Send()
     {
+        /*
         GameInputManager.Instance.Selected.RemoveListener(FieldUpdate);
         GameManager.Instance.SaveMap(SaveFinish);
-        Finish();
+        */
+
+
     }
 
     void SaveFinish(bool success)
