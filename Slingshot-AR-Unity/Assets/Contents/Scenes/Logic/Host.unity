@@ -1297,51 +1297,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 2499141744559268452, guid: 2985c8529ff8444848668dbaa789abe2,
-        type: 3}
-      propertyPath: m_AnchorMax.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2499141744559268452, guid: 2985c8529ff8444848668dbaa789abe2,
-        type: 3}
-      propertyPath: m_AnchorMax.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2499141744559268452, guid: 2985c8529ff8444848668dbaa789abe2,
-        type: 3}
-      propertyPath: m_SizeDelta.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2499141744559268452, guid: 2985c8529ff8444848668dbaa789abe2,
-        type: 3}
-      propertyPath: m_SizeDelta.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2499141742619749413, guid: 2985c8529ff8444848668dbaa789abe2,
-        type: 3}
-      propertyPath: m_AnchorMax.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2499141742619749413, guid: 2985c8529ff8444848668dbaa789abe2,
-        type: 3}
-      propertyPath: m_SizeDelta.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2499141744179674916, guid: 2985c8529ff8444848668dbaa789abe2,
-        type: 3}
-      propertyPath: m_AnchorMax.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2499141744179674916, guid: 2985c8529ff8444848668dbaa789abe2,
-        type: 3}
-      propertyPath: m_SizeDelta.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3381601304021590883, guid: 2985c8529ff8444848668dbaa789abe2,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 2499141742883180201, guid: 2985c8529ff8444848668dbaa789abe2,
         type: 3}
       propertyPath: m_SizeDelta.x
@@ -1371,11 +1326,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2499141743447519662, guid: 2985c8529ff8444848668dbaa789abe2,
-        type: 3}
-      propertyPath: m_Text
-      value: Start Game
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2985c8529ff8444848668dbaa789abe2, type: 3}
