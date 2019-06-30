@@ -33,7 +33,8 @@ public class LocalPlayerObj : MonoBehaviour
     public void ShootBall(float tension)
     {
         //スポーンはカメラ位置
-        GameObject obj = Instantiate(ballContainer.GetBallPrefab(playerBall._selected._type), Camera.main.transform.position, Quaternion.identity);
+        //GameObject obj = Instantiate(ballContainer.GetBallPrefab(playerBall._selected._type), Camera.main.transform.position, Quaternion.identity);
+        GameObject obj = Instantiate(ballContainer.GetBallPrefab(BallContainer.BallType.Normal), Camera.main.transform.position, Quaternion.identity);
 
         //カメラの前方向にrefObjのy座標を元に生成したオブジェクトに力を加える
         //obj.GetComponent<Rigidbody>().AddForce(Camera.main.transform.forward * -refObj.transform.localPosition.y * 2000f);
