@@ -92,7 +92,7 @@ public class SessionManager : MonoBehaviour
         Debug.Log("Game Will be started...");
         for (int i = 0; i < 3; i++)
         {
-            Debug.Log(3 - i);
+            countDownText.text = (3 - i).ToString();
             yield return new WaitForSeconds(1.0f);
         }
         countDownText.gameObject.SetActive(false);
