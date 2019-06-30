@@ -10,7 +10,7 @@ public class Enemy : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        //Spawn(_target);
     }
 
     // Update is called once per frame
@@ -18,15 +18,14 @@ public class Enemy : MonoBehaviour
     {
         if(_target != null)
         {
-            Vector3.Lerp(gameObject.transform.position, _target.transform.position, 3.0f);
         }
     }
 
     public void Spawn(GameObject target)
     {
         Debug.Log("Spawn");
-        _target = target;
         transform.LookAt(_target.transform);
+        iTween.MoveTo(gameObject,iTween.Hash("x",0f,"y",0f,"z",0f,"easetype", iTween.EaseType.easeInQuad, "time", 3.0f));
     }
 
     private void OnCollisionEnter(Collision collision)
