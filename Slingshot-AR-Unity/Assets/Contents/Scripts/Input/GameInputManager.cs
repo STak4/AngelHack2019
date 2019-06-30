@@ -117,7 +117,7 @@ public class GameInputManager : SingletonMonoBehaviour<GameInputManager>
             return false;
 
         // Screen Center is target position
-        if (_raycast.Raycast(new Vector2(0,0), s_Hits, TrackableType.PlaneWithinPolygon))
+        if (_raycast.Raycast(new Vector2(Screen.width/2, Screen.height/2), s_Hits, TrackableType.PlaneWithinPolygon))
         {
             // Raycast hits are sorted by distance, so the first one
             // will be the closest hit.

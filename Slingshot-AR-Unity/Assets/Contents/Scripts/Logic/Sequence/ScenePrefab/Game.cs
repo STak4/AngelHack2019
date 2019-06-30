@@ -7,6 +7,9 @@ public class Game : MonoBehaviour
     [SerializeField]
     SessionManager sessionManager;
 
+    [SerializeField]
+    LocalPlayerObj localPlayer;
+
     bool onGame;
 
     // Start is called before the first frame update
@@ -27,7 +30,11 @@ public class Game : MonoBehaviour
 	{
         if (onGame)
         {
-            Shoot(1.0f);
+            localPlayer.ShootBall(1.0f);
+        }
+        else
+        {
+
         }
 	}
 
@@ -36,14 +43,23 @@ public class Game : MonoBehaviour
 		Load();
 	}
 
-    void Shoot(float power)
-    {
-        //sessionManager.RequestShoot()
-    }
 
     void GameStart()
     {
+        Debug.Log("Add Listener Buttons");
+        GameInputManager.Instance.RightDown.AddListener(PressRight);
+        GameInputManager.Instance.RightDown.AddListener(PressLeft);
+        onGame = true;
+    }
 
+    void PressLeft()
+    {
+        localPlayer.SetBeforeBall();
+    }
+
+    void PressRight()
+    {
+        localPlayer.SetNextBall();
     }
 
     // For Debug

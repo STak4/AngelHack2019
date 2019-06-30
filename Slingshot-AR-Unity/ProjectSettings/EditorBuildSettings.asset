@@ -23,6 +23,12 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Contents/Scenes/main.unity
     guid: 5f431b7ec9a1f4c7ebb8a571d1f653a4
+  - enabled: 0
+    path: Assets/Thirdparty/ARSampleOffical/Scenes/SimpleAR.unity
+    guid: 99c9720ab356a0642a771bea13969a05
+  - enabled: 0
+    path: Assets/Contents/Scenes/Logic/Game.unity
+    guid: fc31903f56d684708a9ce3d42642f330
   m_configObjects:
     com.unity.xr.arkit.PlayerSettings: {fileID: 11400000, guid: 0c13108989af3416b8b18a4f57cfb756,
       type: 2}
